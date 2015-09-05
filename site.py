@@ -55,5 +55,6 @@ cherrypy.config.update({
     'log.screen': False,
     'server.socket_host': '127.0.0.1',
     'server.socket_port': 16166,
+    'log.error_file': '/home/jbutterf/logs/error_twilio.log'
 })
 cherrypy.quickstart(Root())
