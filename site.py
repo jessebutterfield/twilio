@@ -16,7 +16,7 @@ CLIENT = 'jenny'
 class Root(object):
 
     @cherrypy.expose
-    def token():
+    def token(self):
       account_sid = os.environ.get("ACCOUNT_SID", ACCOUNT_SID)
       auth_token = os.environ.get("AUTH_TOKEN", AUTH_TOKEN)
       app_sid = os.environ.get("APP_SID", APP_SID)
@@ -36,7 +36,7 @@ class Root(object):
       return capability.generate()
 
     @cherrypy.expose
-    def welcome():
+    def welcome(self):
         resp = twilio.twiml.Response()
         resp.say("Welcome to Twilio")
         return str(resp)
@@ -55,6 +55,6 @@ cherrypy.config.update({
     'log.screen': False,
     'server.socket_host': '127.0.0.1',
     'server.socket_port': 16166,
-    'log.error_file': '/home/jbutterf/logs/error_twilio.log'
+    'log.error_file': '/home/jbutterf/logs/user/error_twilio.log'
 })
 cherrypy.quickstart(Root())
